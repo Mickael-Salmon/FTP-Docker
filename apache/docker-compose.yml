@@ -1,0 +1,26 @@
+﻿version: '3.8'
+
+services:
+  apache:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+      - "5501:5501"
+    volumes:
+      - ./logs:/usr/local/apache2/logs
+      - ./www:/usr/local/apache2/htdocs
+      - ./sites-enabled/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./sites-enabled/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+      - ./ssl:/usr/local/apache2/conf/ssl
+    networks:
+      - internal_net
+      - external_net
+
+networks:
+  internal_net:
+    name: internal_net
+    external: true
+  external_net:
+    name: external_net
+    external: true
