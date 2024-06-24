@@ -77,6 +77,13 @@ else
   docker compose -f docker-compose-nginx.yml up -d
 fi
 
+echo "Configuration et déploiement du serveur FTP..."
+
+# Construire et lancer le conteneur FTP
+docker compose -f docker-compose-ftp.yml build
+docker compose -f docker-compose-ftp.yml up -d
+
+echo "Serveur FTP déployé et en cours d'exécution."
 # # Construire et lancer les conteneurs FTP et Fail2Ban
 # echo "Construction des images Docker personnalisées pour vsftpd et Fail2Ban..."
 # docker compose -f docker-compose-ftp-fail2ban.yml build
