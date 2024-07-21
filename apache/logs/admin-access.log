@@ -1,6 +1,0 @@
-150.10.0.1 - - [23/Jun/2024:15:44:06 +0000] "GET / HTTP/1.1" 200 315 "-" "curl/8.6.0"
-150.10.0.1 - - [23/Jun/2024:15:44:56 +0000] "GET / HTTP/1.1" 200 315 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
-150.10.0.1 - - [23/Jun/2024:15:44:56 +0000] "GET /images/logo.png HTTP/1.1" 200 24685 "http://admin.rainbowbank.com:5501/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
-150.10.0.1 - - [23/Jun/2024:15:44:56 +0000] "GET /favicon.ico HTTP/1.1" 404 196 "http://admin.rainbowbank.com:5501/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
-150.10.0.1 - - [23/Jun/2024:15:45:04 +0000] "GET / HTTP/1.1" 200 315 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
-150.10.0.1 - - [23/Jun/2024:15:45:04 +0000] "GET /images/logo.png HTTP/1.1" 200 24685 "http://admin.rainbowbank.com:5501/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
