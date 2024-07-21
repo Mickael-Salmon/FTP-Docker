@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  site1:
+    build:
+      context: ./site1
+    container_name: site1
+    networks:
+      web_network:
+        ipv4_address: 150.10.0.2
+      internal_network:
+        ipv4_address: 192.168.10.2
+    ports:
+      - "80:80"
+      - "443:443"
+      - "5501:5501"
+      - "5502:5502"
+    volumes:
+      - ./logs/apache2/site1:/usr/local/apache2/logs
+      - ./site1/www:/usr/local/apache2/htdocs
+      - ./site1/sites-enabled/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./site1/sites-enabled/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+      - ./site1/ssl:/usr/local/apache2/conf/ssl
+
+  ftps:
+    build: ./ftps
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    volumes:
+      - ./ftps/config:/etc/pure-ftpd
+      - ./ftps/home:/home
+      - ./site1/www:/home/developer
+      - ./site1/www/admin.rainbowbank.com/images:/home/designer/admin/images
+      - ./site1/www/extranet.rainbowbank.com/images:/home/designer/extranet/images
+      - ./logs/pure-ftpd:/var/log/pure-ftpd  # Montage des logs FTPS
+
+    networks:
+      - internal_network
+
+  sftp:
+    image: atmoz/sftp
+    container_name: sftp_server
+    networks:
+      internal_network:
+        ipv4_address: 192.168.10.4
+    ports:
+      - "22:22"
+    volumes:
+      - ./logs/sftp:/home/sftpuser/upload
+      - ./logs/auth.log:/var/log/auth.log  # Montage du log auth
+    environment:
+      SFTP_USERS: "sftpuser:password:1001"
+
+  test:
+    build: ./test
+    container_name: test_container
+    networks:
+      - internal_network
+    ports:
+      - "0:22"  # Utilisez un port dynamique pour éviter les conflits
+    command: ["/bin/bash"]
+    stdin_open: true
+    tty: true
+
+  fail2ban:
+    build: ./fail2ban
+    container_name: fail2ban
+    networks:
+      internal_network:
+        ipv4_address: 192.168.10.5
+      web_network:
+        ipv4_address: 150.10.0.3
+    volumes:
+      - ./logs/apache2/site1:/var/log/apache2/site1
+      - ./logs/apache2/site2:/var/log/apache2/site2
+      - ./logs/pure-ftpd:/var/log/pure-ftpd
+      - ./logs/auth.log:/var/log/auth.log
+
+networks:
+  web_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 150.10.0.0/16
+  internal_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24

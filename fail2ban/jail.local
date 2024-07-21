@@ -1,0 +1,40 @@
+[DEFAULT]
+bantime  = 600
+findtime  = 600
+maxretry = 3
+
+[ssh]
+enabled  = true
+port     = ssh
+filter   = sshd
+logpath  = /var/log/auth.log
+maxretry = 3
+
+[apache-auth]
+enabled = true
+port = http,https
+filter = apache-auth
+logpath = /var/log/apache2/site1/error.log
+          /var/log/apache2/site2/error.log
+maxretry = 3
+
+[pure-ftpd]
+enabled  = true
+port     = ftp,ftp-data,ftps,ftps-data
+filter   = pure-ftpd
+logpath  = /var/log/pure-ftpd/pure-ftpd.log
+maxretry = 3
+
+[vsftpd]
+enabled  = true
+port     = ftp,ftp-data,ftps,ftps-data
+filter   = vsftpd
+logpath  = /var/log/vsftpd.log
+maxretry = 3
+
+[sftp]
+enabled  = true
+port     = ssh
+filter   = sshd
+logpath  = /var/log/auth.log
+maxretry = 3
