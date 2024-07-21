@@ -33,24 +33,25 @@ services:
       - ./site1/www:/home/developer
       - ./site1/www/admin.rainbowbank.com/images:/home/designer/admin/images
       - ./site1/www/extranet.rainbowbank.com/images:/home/designer/extranet/images
-      - ./logs/pure-ftpd:/var/log/pure-ftpd  # Montage des logs FTPS
+      - ./logs/pure-ftpd/pure-ftpd.log:/var/log/pure-ftpd/pure-ftpd.log  # Montage des logs FTPS
+      - ./logs/vsftpd/vsftpd.log:/var/log/vsftpd.log
 
     networks:
       - internal_network
 
-  sftp:
-    image: atmoz/sftp
-    container_name: sftp_server
-    networks:
-      internal_network:
-        ipv4_address: 192.168.10.4
-    ports:
-      - "22:22"
-    volumes:
-      - ./logs/sftp:/home/sftpuser/upload
-      - ./logs/auth.log:/var/log/auth.log  # Montage du log auth
-    environment:
-      SFTP_USERS: "sftpuser:password:1001"
+  # sftp:
+  #   image: atmoz/sftp
+  #   container_name: sftp_server
+  #   networks:
+  #     internal_network:
+  #       ipv4_address: 192.168.10.4
+  #   ports:
+  #     - "22:22"
+  #   volumes:
+  #     - ./logs/sftp:/home/sftpuser/upload
+  #     - ./logs/auth.log:/var/log/auth.log  # Montage du log auth
+  #   environment:
+  #     SFTP_USERS: "sftpuser:password:1001"
 
   test:
     build: ./test
@@ -69,13 +70,15 @@ services:
     networks:
       internal_network:
         ipv4_address: 192.168.10.5
-      web_network:
-        ipv4_address: 150.10.0.3
+      # web_network:
+      #   ipv4_address: 150.10.0.3
     volumes:
       - ./logs/apache2/site1:/var/log/apache2/site1
       - ./logs/apache2/site2:/var/log/apache2/site2
-      - ./logs/pure-ftpd:/var/log/pure-ftpd
+      - ./logs/pure-ftpd/pure-ftpd.log:/var/log/pure-ftpd/pure-ftpd.log
       - ./logs/auth.log:/var/log/auth.log
+      # Monter le fichier de log de vsftpd
+      - ./logs/vsftpd/vsftpd.log:/var/log/vsftpd.log
 
 networks:
   web_network:
