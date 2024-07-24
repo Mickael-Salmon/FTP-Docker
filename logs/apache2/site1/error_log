@@ -248,3 +248,6 @@
 [Mon Jul 15 18:37:22.282131 2024] [mpm_event:notice] [pid 1:tid 139940227266432] AH00489: Apache/2.4.59 (Unix) OpenSSL/3.0.11 configured -- resuming normal operations
 [Mon Jul 15 18:37:22.282168 2024] [core:notice] [pid 1:tid 139940227266432] AH00094: Command line: 'httpd -D FOREGROUND'
 [Mon Jul 15 18:37:25.969010 2024] [mpm_event:notice] [pid 1:tid 139940227266432] AH00492: caught SIGWINCH, shutting down gracefully
+[Tue Jul 23 17:28:04.920912 2024] [mpm_event:notice] [pid 1:tid 140682905237376] AH00489: Apache/2.4.59 (Unix) OpenSSL/3.0.11 configured -- resuming normal operations
+[Tue Jul 23 17:28:04.920937 2024] [core:notice] [pid 1:tid 140682905237376] AH00094: Command line: 'httpd -D FOREGROUND'
+[Tue Jul 23 18:41:45.108759 2024] [mpm_event:notice] [pid 1:tid 140682905237376] AH00492: caught SIGWINCH, shutting down gracefully

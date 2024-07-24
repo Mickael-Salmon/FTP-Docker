@@ -334,3 +334,7 @@
 [Mon Jul 15 18:37:22.275810 2024] [ssl:warn] [pid 1:tid 139940227266432] AH01909: extranet.rainbowbank.com:443:0 server certificate does NOT include an ID which matches the server name
 [Mon Jul 15 18:37:22.280072 2024] [ssl:warn] [pid 1:tid 139940227266432] AH01906: extranet.rainbowbank.com:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
 [Mon Jul 15 18:37:22.280088 2024] [ssl:warn] [pid 1:tid 139940227266432] AH01909: extranet.rainbowbank.com:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Jul 23 17:28:04.916919 2024] [ssl:warn] [pid 1:tid 140682905237376] AH01906: extranet.rainbowbank.com:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Tue Jul 23 17:28:04.916933 2024] [ssl:warn] [pid 1:tid 140682905237376] AH01909: extranet.rainbowbank.com:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Jul 23 17:28:04.919865 2024] [ssl:warn] [pid 1:tid 140682905237376] AH01906: extranet.rainbowbank.com:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Tue Jul 23 17:28:04.919879 2024] [ssl:warn] [pid 1:tid 140682905237376] AH01909: extranet.rainbowbank.com:443:0 server certificate does NOT include an ID which matches the server name
