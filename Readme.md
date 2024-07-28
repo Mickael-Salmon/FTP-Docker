@@ -309,6 +309,9 @@ ncftp -u dev -p password ftp://192.168.10.3
 ```
 lftp -e "set ssl:verify-certificate no; login dev password; ls" ftps://192.168.10.3
 ```
+```
+lftp -u dev,password -e "set ftp:ssl-allow true; set ftp:ssl-force true; set ssl:verify-certificate no; ls; bye" ftp://192.168.10.4
+```
 
 ### Tester SFTP
 
